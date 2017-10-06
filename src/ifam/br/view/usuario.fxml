@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.shape.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.UsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.UsuarioController">
    <children>
       <Pane prefHeight="26.0" prefWidth="900.0" style="-fx-background-color: #555;">
          <children>
@@ -30,22 +41,45 @@
       </Pane>
       <Pane layoutY="27.0" prefHeight="500.0" prefWidth="140.0" style="-fx-background-color: #999;">
          <children>
-            <Button layoutY="3.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Principal" />
-            <Button layoutY="52.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Meus Horarios" />
-            <Button layoutY="101.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Monitoria" visible="false" />
+            <GridPane layoutY="3.0" vgap="3.0">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Button fx:id="btnPrincipal" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Principal" />
+                  <Button fx:id="btnMeusHorarios" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Meus Horarios" GridPane.rowIndex="1" />
+                  <Button fx:id="btnMonitoria" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Monitoria" GridPane.rowIndex="2" />
+               </children>
+            </GridPane>
             <Pane layoutY="262.0" prefHeight="200.0" prefWidth="140.0" style="-fx-background-color: #999;">
                <children>
                   <Circle fill="DODGERBLUE" layoutX="70.0" layoutY="49.0" radius="35.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                  <Label layoutX="26.0" layoutY="100.0" text="Nome aluno">
-                     <font>
-                        <Font name="Apple SD Gothic Neo Bold" size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="27.0" layoutY="125.0" text="Nome curso">
-                     <font>
-                        <Font name="Apple SD GothicNeo ExtraBold" size="18.0" />
-                     </font>
-                  </Label>
+                  <GridPane layoutX="26.0" layoutY="100.0" vgap="5.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Nome aluno">
+                           <font>
+                              <Font name="Apple SD Gothic Neo Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nome curso" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Apple SD GothicNeo ExtraBold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
                   <Button layoutY="173.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Perfil" />
                </children>
                <effect>
@@ -55,7 +89,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Pane>
-            <Button layoutY="465.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" text="Sair" />
+            <Button fx:id="btnSair" layoutY="465.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" text="Sair" />
          </children>
       </Pane>
       <Group>
@@ -309,7 +343,7 @@
                   <Button layoutX="156.0" layoutY="191.0" mnemonicParsing="false" text="Gerar Relatório" />
                </children>
             </Pane>
-            <Pane fx:id="tabPrincipal1" layoutX="140.0" layoutY="26.0" prefHeight="500.0" prefWidth="760.0" style="-fx-background-color: #f3f3f3;" visible="false">
+            <Pane fx:id="tabPerfil" layoutX="140.0" layoutY="26.0" prefHeight="500.0" prefWidth="760.0" style="-fx-background-color: #f3f3f3;" visible="false">
                <children>
                   <Pane layoutX="14.0" layoutY="12.0" prefHeight="477.0" prefWidth="729.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
                      <children>
@@ -510,7 +544,7 @@
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                </padding>
             </Pane>
-            <Pane fx:id="tabEspacoMonitor1" layoutX="140.0" layoutY="26.0" prefHeight="500.0" prefWidth="760.0" style="-fx-background-color: #f3f3f3;">
+            <Pane fx:id="tabAgendarSala" layoutX="140.0" layoutY="26.0" prefHeight="500.0" prefWidth="760.0" style="-fx-background-color: #f3f3f3;" visible="false">
                <children>
                   <Text layoutX="14.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Agendar sala" wrappingWidth="340.6829261779785">
                      <font>
@@ -530,32 +564,40 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                   </TableView>
-                  <ComboBox layoutX="80.0" layoutY="59.0" prefWidth="150.0" promptText="Sala 1" />
-                  <Text layoutX="35.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sala:">
-                     <font>
-                        <Font name="Apple SD Gothic Neo Light" size="20.0" />
-                     </font>
-                  </Text>
-                  <Button layoutX="687.0" layoutY="461.0" mnemonicParsing="false" text="Salvar">
-                     <font>
-                        <Font name="Apple SD Gothic Neo Light" size="15.0" />
-                     </font>
-                  </Button>
-                  <Text layoutX="433.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total de horas monitoria:">
-                     <font>
-                        <Font name="Apple SD Gothic Neo Bold" size="13.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="597.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
-                     <font>
-                        <Font name="Apple SD Gothic Neo Light" size="13.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="624.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Horas.">
-                     <font>
-                        <Font name="Apple SD Gothic Neo Light" size="13.0" />
-                     </font>
-                  </Text>
+                  <HBox alignment="CENTER" layoutX="35.0" layoutY="59.0" spacing="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sala:">
+                           <font>
+                              <Font name="Apple SD Gothic Neo Light" size="20.0" />
+                           </font>
+                        </Text>
+                        <ComboBox prefWidth="150.0" promptText="Sala 1" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="433.0" layoutY="461.0" spacing="15.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total de horas monitoria:">
+                           <font>
+                              <Font name="Apple SD Gothic Neo Bold" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10">
+                           <font>
+                              <Font name="Apple SD Gothic Neo Light" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Horas.">
+                           <font>
+                              <Font name="Apple SD Gothic Neo Light" size="13.0" />
+                           </font>
+                        </Text>
+                        <Button mnemonicParsing="false" text="Salvar">
+                           <font>
+                              <Font name="Apple SD Gothic Neo Light" size="15.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
@@ -563,7 +605,7 @@
             </Pane>
          </children>
       </Group>
-      <Pane layoutX="333.0" layoutY="175.0" prefHeight="181.0" prefWidth="316.0" style="-fx-background-color: #f3f3f3;" visible="false">
+      <Pane fx:id="tabVaga" layoutX="333.0" layoutY="175.0" prefHeight="181.0" prefWidth="316.0" style="-fx-background-color: #f3f3f3;" visible="false">
          <children>
             <Text layoutX="13.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vaga de monitoria">
                <font>
