@@ -1,7 +1,13 @@
 package ifam.br.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Diciplina {
 
+    @Id@GeneratedValue
     private Integer codigo;
     private String nome;
 
