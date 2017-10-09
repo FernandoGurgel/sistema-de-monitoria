@@ -3,6 +3,7 @@ package ifam.br.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Aluno {
@@ -11,6 +12,7 @@ public class Aluno {
     private String nome;
     private String telefone;
     private String email;
+    @ManyToOne
     private Curso curso;
     private String senha;
     private long matricula;
