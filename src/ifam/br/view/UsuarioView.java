@@ -18,8 +18,8 @@ public class UsuarioView extends Application{
 
     public UsuarioView() {
         dao = new AlunoDAO(ConnectionFactory.getEntityManager());
-        aluno = dao.findById(2l);
-        System.out.println(aluno.getEmail());
+        aluno = dao.findById(1L);
+        //System.out.println(aluno.getEmail());
         ConnectionFactory.closeEntityFactory();
     }
 

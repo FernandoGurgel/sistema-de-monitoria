@@ -3,34 +3,37 @@ package ifam.br.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Curso {
 
     @Id
     @GeneratedValue
-    private Long codigo;
-    private String nome;
+    private Long curcodigo;
+    private String curnome;
 
-    public Curso() {}
-
-    public Curso(String nome) {
-        this.nome = nome;
+    public Curso(String curnome) {
+        this.curnome = curnome;
     }
 
-    public Long getCodigo() {
-        return codigo;
+    public Curso() {
+
     }
 
-    public void setCodigo(Long codigo) {
-        this.codigo = codigo;
+    public Long getCurcodigo() {
+        return curcodigo;
     }
 
-    public String getNome() {
-        return nome;
+    public void setCurcodigo(Long curcodigo) {
+        this.curcodigo = curcodigo;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getCurnome() {
+        return curnome;
+    }
+
+    public void setCurnome(String curnome) {
+        this.curnome = curnome;
     }
 }

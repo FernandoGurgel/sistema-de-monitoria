@@ -10,5 +10,4 @@ public class GerarTabelas {
                 Persistence.createEntityManagerFactory("pds");
         factory.close();
     }
-
 }
