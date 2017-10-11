@@ -1,22 +1,43 @@
 package ifam.br.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Aluno {
+public class Aluno implements Serializable {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long matricula;
     private String nome;
     private String telefone;
     private String email;
+    private String senha;
+    private EModulo modulo;
     @ManyToOne
     private Curso curso;
-    private String senha;
-    private long matricula;
-    private EModulo modulo;
+
+    public Aluno() {
+    }
+
+    public Aluno(String nome, String telefone, String email, String senha, EModulo modulo, Curso curso) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.modulo = modulo;
+        this.curso = curso;
+    }
+
+    public Aluno(Long mart,String nome, String telefone, String email, String senha, EModulo modulo, Curso curso) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.modulo = modulo;
+        this.curso = curso;
+        this.matricula =  mart;
+    }
 
 
     public String getNome() {

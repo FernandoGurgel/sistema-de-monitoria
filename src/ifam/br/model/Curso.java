@@ -7,15 +7,22 @@ import javax.persistence.Id;
 @Entity
 public class Curso {
 
-    @Id@GeneratedValue
-    private Integer codigo;
+    @Id
+    @GeneratedValue
+    private Long codigo;
     private String nome;
 
-    public Integer getCodigo() {
+    public Curso() {}
+
+    public Curso(String nome) {
+        this.nome = nome;
+    }
+
+    public Long getCodigo() {
         return codigo;
     }
 
-    public void setCodigo(Integer codigo) {
+    public void setCodigo(Long codigo) {
         this.codigo = codigo;
     }
 

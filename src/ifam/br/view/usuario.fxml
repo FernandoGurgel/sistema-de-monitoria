@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.Group?>
@@ -21,15 +29,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxapplication1.UsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="900.0" style="-fx-background-color: #f9f9f9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ifam.br.controller.UsuarioController">
    <children>
-      <Pane prefHeight="26.0" prefWidth="900.0" style="-fx-background-color: #555;">
+      <Pane nodeOrientation="LEFT_TO_RIGHT" opacity="0.97" prefHeight="26.0" prefWidth="900.0" style="-fx-background-color: #555;">
          <children>
-            <HBox alignment="TOP_RIGHT" layoutX="840.0" layoutY="5.0" prefHeight="8.0" prefWidth="40.0" spacing="5.0">
+            <HBox alignment="TOP_RIGHT" layoutX="846.0" layoutY="5.0" prefHeight="8.0" prefWidth="40.0" spacing="20.0">
                <children>
-                  <Circle fill="#61c953" layoutX="189.0" layoutY="32.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                  <Circle fill="#ffbb3d" layoutX="189.0" layoutY="32.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-                  <Circle fill="#e86969" layoutX="189.0" layoutY="32.0" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
+                  <Circle fx:id="btn_minimizar" fill="#61c953" layoutX="189.0" layoutY="32.0" radius="7.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                  <Circle fill="#e86969" layoutX="189.0" layoutY="32.0" onMousePressed="#OnClose" radius="7.0" stroke="#ffffff00" strokeType="INSIDE" />
                </children>
             </HBox>
             <Text fill="WHITE" layoutX="385.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SGGVE - Aluno">
@@ -51,9 +58,9 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="btnPrincipal" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Principal" />
-                  <Button fx:id="btnMeusHorarios" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Meus Horarios" GridPane.rowIndex="1" />
-                  <Button fx:id="btnMonitoria" mnemonicParsing="false" prefHeight="45.0" prefWidth="140.0" text="Monitoria" GridPane.rowIndex="2" />
+                  <Button fx:id="btnPrincipal" mnemonicParsing="false" onAction="#OnSelectButton" prefHeight="45.0" prefWidth="140.0" text="Principal" />
+                  <Button fx:id="btnMeusHorarios" mnemonicParsing="false" onAction="#OnSelectButton" prefHeight="45.0" prefWidth="140.0" text="Meus Horarios" GridPane.rowIndex="1" />
+                  <Button fx:id="btnMonitoria" mnemonicParsing="false" onAction="#OnSelectButton" prefHeight="45.0" prefWidth="140.0" text="Monitoria" visible="false" GridPane.rowIndex="2" />
                </children>
             </GridPane>
             <Pane layoutY="262.0" prefHeight="200.0" prefWidth="140.0" style="-fx-background-color: #999;">
@@ -68,19 +75,19 @@
                         <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label text="Nome aluno">
+                        <Label fx:id="menuNome" text="Nome aluno">
                            <font>
                               <Font name="Apple SD Gothic Neo Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Nome curso" GridPane.rowIndex="1">
+                        <Label fx:id="menuCurso" text="Nome curso" GridPane.rowIndex="1">
                            <font>
                               <Font name="Apple SD GothicNeo ExtraBold" size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </GridPane>
-                  <Button layoutY="173.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="140.0" text="Perfil" />
+                  <Button fx:id="btnPerfil" layoutY="173.0" mnemonicParsing="false" onAction="#OnSelectButton" prefHeight="26.0" prefWidth="140.0" text="Perfil" />
                </children>
                <effect>
                   <Blend />
@@ -89,7 +96,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </Pane>
-            <Button fx:id="btnSair" layoutY="465.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="140.0" text="Sair" />
+            <Button fx:id="btnSair" layoutY="465.0" mnemonicParsing="false" onAction="#OnSelectButton" prefHeight="32.0" prefWidth="140.0" text="Sair" />
          </children>
       </Pane>
       <Group>
@@ -343,7 +350,7 @@
                   <Button layoutX="156.0" layoutY="191.0" mnemonicParsing="false" text="Gerar Relatório" />
                </children>
             </Pane>
-            <Pane fx:id="tabPerfil" layoutX="140.0" layoutY="26.0" prefHeight="500.0" prefWidth="760.0" style="-fx-background-color: #f3f3f3;" visible="false">
+            <Pane fx:id="vwPerfil" layoutX="140.0" layoutY="26.0" prefHeight="500.0" prefWidth="760.0" style="-fx-background-color: #f3f3f3;" visible="false">
                <children>
                   <Pane layoutX="14.0" layoutY="12.0" prefHeight="477.0" prefWidth="729.0" style="-fx-background-color: #fff; -fx-background-radius: 10px;">
                      <children>
@@ -353,12 +360,12 @@
                               <Font name="Apple SD Gothic Neo Light" size="46.0" />
                            </font>
                         </Label>
-                        <Label layoutX="583.0" layoutY="12.0" text="modulo aluno">
+                        <Label fx:id="pfModulo" layoutX="583.0" layoutY="12.0" text="modulo aluno">
                            <font>
                               <Font name="Apple SD Gothic Neo Light" size="23.0" />
                            </font>
                         </Label>
-                        <Label layoutX="187.0" layoutY="83.0" text="Matrícula">
+                        <Label fx:id="pfMatricula" layoutX="187.0" layoutY="83.0" text="Matrícula">
                            <font>
                               <Font name="Apple SD Gothic Neo Light" size="23.0" />
                            </font>
@@ -423,17 +430,17 @@
                                     <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <TextField layoutX="126.0" layoutY="226.0" GridPane.rowIndex="1" />
-                                    <TextField layoutX="126.0" layoutY="263.0" GridPane.rowIndex="2" />
-                                    <TextField layoutX="126.0" layoutY="300.0" GridPane.rowIndex="3" />
-                                    <TextField layoutX="126.0" layoutY="342.0" GridPane.rowIndex="4" />
-                                    <TextField layoutX="127.0" layoutY="182.0" />
+                                    <TextField fx:id="pfTelefone" layoutX="126.0" layoutY="226.0" GridPane.rowIndex="1" />
+                                    <TextField fx:id="pfEmail" layoutX="126.0" layoutY="263.0" GridPane.rowIndex="2" />
+                                    <TextField fx:id="pfCurso" layoutX="126.0" layoutY="300.0" GridPane.rowIndex="3" />
+                                    <TextField fx:id="pfSenha" layoutX="126.0" layoutY="342.0" GridPane.rowIndex="4" />
+                                    <TextField fx:id="pfNome" layoutX="127.0" layoutY="182.0" />
                                  </children>
                               </GridPane>
                            </children>
                         </GridPane>
-                        <Button layoutX="25.0" layoutY="435.0" mnemonicParsing="false" text="Solicitar Monitoria voluntária" />
-                        <Button layoutX="651.0" layoutY="435.0" mnemonicParsing="false" text="Salvar" />
+                        <Button fx:id="pfBtnSolicita" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" text="Solicitar Monitoria voluntária" />
+                        <Button fx:id="pfBtnSalvar" layoutX="651.0" layoutY="435.0" mnemonicParsing="false" text="Salvar" />
                      </children>
                      <effect>
                         <Blend />
